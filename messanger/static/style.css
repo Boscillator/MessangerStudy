@@ -23,8 +23,15 @@
     nav {
         /*Text*/
         text-align: center;
-        /*Box Mdel*/
+        /*Box Model*/
         margin:0px 25%;
+    #flashed{
+        
+        /* Box Model */
+        margin: 25px 25%
+        
+        
+    }
         
     }
 

@@ -13,7 +13,9 @@
             {% for conv in conversations %}
                 // <a href="{{url_for('conversations')}}#{{conv.to}}">{{conv.to}}</a>
             {% endfor %}
-            // 
+            {% if not session.username %}// <a href="{{url_for('login')}}">Log In</a>
+            {% else %} //<a href={{url_for('logout')}} >Log Out {{session.username}}</a>
+            {% endif %}
         </nav>
         <div id="content">{% block content %}{% endblock %}</div>
     </body>

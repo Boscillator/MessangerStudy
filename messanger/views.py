@@ -6,14 +6,14 @@
 #------------------------------------------------------------------------------#
 
 #Imports------------------------------------------------------------------------
-from flask import render_template, request, redirect, url_for
+from flask import render_template, request, redirect, url_for, session
 from messanger import app
 
 #Global Deleratons--------------------------------------------------------------
 dummyConv=[{'to':1, 'log':"Lorem Ipsum"},{'to':2, 'log':"Lorem Ipsum"}]
 #Functions----------------------------------------------------------------------
 def do_the_login(username,password):
-    return NotImplemented
+    return username
 
 
 @app.route('/')
@@ -27,9 +27,12 @@ def conversations():
 @app.route('/accounts/login', methods=['GET','POST'])
 def login():
     if request.method == 'POST':
-        do_the_login(request.form['username'],request.form['password'])
+        session['username']=do_the_login(request.form['username'],request.form['password'])
         return redirect(url_for('index'))
     else:
         return render_template('login.html', conversations=dummyConv)
-
+@app.route('/accounts/logout')
+def logout():
+    session.pop('username',None)
+    return redirect(url_for('index'))
 #Global-------------------------------------------------------------------------
