@@ -1,12 +1,19 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<!DOCTYPE HTML>
 <html>
     <head>
         {% block head %}
-        <link rel="stylesheet" href="{{url_for('static',filename='style.css')}}" />
-        <title>{% block title %}{% endblock %} - Fred's Messanging Thing</title>
+        <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}" />
+        <title>{% block title %}{% endblock %} - Missi</title>
         {% endblock %}
     </head>
     <body>
-        {% block content %}{% endblock %}
+        <div id="header" ><h1>Missi</h1></div>
+        <nav>
+            <a href="{{url_for('index')}}">Home</a>
+            {% for conv in conversations %}
+                // <a href="{{url_for('index')}}#tips">{{conv}}</a>
+            {% endfor %}
+        </nav>
+        <div id="content">{% block content %}{% endblock %}</div>
     </body>
 </html>

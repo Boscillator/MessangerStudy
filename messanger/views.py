@@ -14,6 +14,9 @@ from messanger import app
 #Functions----------------------------------------------------------------------
 @app.route('/')
 def index():
-    return render_template('jiberish.html')
+    return render_template('jiberish.html', conversations=['1','2','3'])
+
+
+    
 
 #Global-------------------------------------------------------------------------

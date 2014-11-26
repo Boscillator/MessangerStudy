@@ -1,0 +1,28 @@
+/*Main CSS file for messanger study */
+
+/*Divs*/
+#header{
+    /*Color*/
+    background-color: #800000;
+    
+    /*Text*/
+    text-align: center;
+    
+    /*Box Model*/
+    padding: 0.005% 0.005%;
+    margin: 25px 25%;
+    
+}
+#content {
+    /*Box Model*/
+    margin: 25px 25%;
+}
+
+/*Elements*/
+nav {
+    /*Text*/
+    text-align: center;
+    /*Box Mdel*/
+    margin:0px 25%;
+    
+}
