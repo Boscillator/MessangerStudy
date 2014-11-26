@@ -6,7 +6,7 @@
 #------------------------------------------------------------------------------#
 
 #Imports------------------------------------------------------------------------
-from flask import render_template, request
+from flask import render_template, request, redirect, url_for
 from messanger import app
 
 #Global Deleratons--------------------------------------------------------------
@@ -28,6 +28,7 @@ def conversations():
 def login():
     if request.method == 'POST':
         do_the_login(request.form['username'],request.form['password'])
+        return redirect(url_for('index'))
     else:
         return render_template('login.html', conversations=dummyConv)
 
