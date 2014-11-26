@@ -11,8 +11,9 @@
         <nav>
             <a href="{{url_for('index')}}">Home</a>
             {% for conv in conversations %}
-                // <a href="{{url_for('index')}}#tips">{{conv}}</a>
+                // <a href="{{url_for('conversations')}}#{{conv.to}}">{{conv.to}}</a>
             {% endfor %}
+            // 
         </nav>
         <div id="content">{% block content %}{% endblock %}</div>
     </body>

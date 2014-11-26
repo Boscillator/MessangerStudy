@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %} {{Name}} {% endblock %}
+{% block content %}
+    <div id="conversations" >
+        {% for conv in conversations %}
+        <div class="conversation">
+            <a id="{{conv.to}}"></a>
+            <h4>{{conv.to}}</h4><br />
+            <textarea rows="10" cols="80">{{conv.log}}</textarea> <br /><br />
+        </div>
+        {% endfor %}
+    </div>
+{% endblock %}

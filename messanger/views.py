@@ -6,17 +6,29 @@
 #------------------------------------------------------------------------------#
 
 #Imports------------------------------------------------------------------------
-from flask import render_template
+from flask import render_template, request
 from messanger import app
 
 #Global Deleratons--------------------------------------------------------------
-
+dummyConv=[{'to':1, 'log':"Lorem Ipsum"},{'to':2, 'log':"Lorem Ipsum"}]
 #Functions----------------------------------------------------------------------
+def do_the_login(username,password):
+    return NotImplemented
+
+
 @app.route('/')
 def index():
-    return render_template('jiberish.html', conversations=['1','2','3'])
+    return render_template('jiberish.html', conversations=dummyConv)
 
+@app.route('/conv')
+def conversations():
+    return render_template('conversation.html', conversations=dummyConv)
 
-    
+@app.route('/accounts/login', methods=['GET','POST'])
+def login():
+    if request.method == 'POST':
+        do_the_login(request.form['username'],request.form['password'])
+    else:
+        return render_template('login.html', conversations=dummyConv)
 
 #Global-------------------------------------------------------------------------
