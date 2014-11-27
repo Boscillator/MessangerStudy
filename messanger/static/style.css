@@ -25,12 +25,17 @@
         text-align: center;
         /*Box Model*/
         margin:0px 25%;
+    }
     #flashed{
         
         /* Box Model */
-        margin: 25px 25%
+        margin: 25px 25%;
         
+        /* Background */
+        background-color: #CCCCCC;
         
+        /* text */
+        text-align: center;
     }
         
     }

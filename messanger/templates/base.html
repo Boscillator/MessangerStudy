@@ -17,6 +17,9 @@
             {% else %} //<a href={{url_for('logout')}} >Log Out {{session.username}}</a>
             {% endif %}
         </nav>
-        <div id="content">{% block content %}{% endblock %}</div>
+        <div id="content">
+            {% if get_flashed_messages() %}<div id="flashed">{% for msg in get_flashed_messages() %}{{msg}}{% endfor %}</div>{% endif %}
+            {% block content %}{% endblock %}
+        </div>
     </body>
 </html>

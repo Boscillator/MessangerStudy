@@ -6,7 +6,7 @@
 #------------------------------------------------------------------------------#
 
 #Imports------------------------------------------------------------------------
-from flask import render_template, request, redirect, url_for, session
+from flask import render_template, request, redirect, url_for, session, flash
 from messanger import app
 
 #Global Deleratons--------------------------------------------------------------
@@ -27,12 +27,14 @@ def conversations():
 @app.route('/accounts/login', methods=['GET','POST'])
 def login():
     if request.method == 'POST':
+        flash('Logged In')
         session['username']=do_the_login(request.form['username'],request.form['password'])
         return redirect(url_for('index'))
-    else:
+    else:   
         return render_template('login.html', conversations=dummyConv)
 @app.route('/accounts/logout')
 def logout():
+    flash('Logged Out')
     session.pop('username',None)
     return redirect(url_for('index'))
 #Global-------------------------------------------------------------------------
