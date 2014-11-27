@@ -15,7 +15,7 @@ dummyConv=[{'to':1, 'log':"Lorem Ipsum"},{'to':2, 'log':"Lorem Ipsum"}]
 def do_the_login(username,password):
     return username
 
-
+#Main Views
 @app.route('/')
 def index():
     return render_template('jiberish.html', conversations=dummyConv)
@@ -23,7 +23,7 @@ def index():
 @app.route('/conv')
 def conversations():
     return render_template('conversation.html', conversations=dummyConv)
-
+#account views
 @app.route('/accounts/login', methods=['GET','POST'])
 def login():
     if request.method == 'POST':
@@ -37,4 +37,7 @@ def logout():
     flash('Logged Out')
     session.pop('username',None)
     return redirect(url_for('index'))
+
+
+#backend views
 #Global-------------------------------------------------------------------------
