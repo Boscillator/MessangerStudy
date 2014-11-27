@@ -7,6 +7,12 @@
             <a id="{{conv.to}}"></a>
             <h4>{{conv.to}}</h4><br />
             <textarea rows="10" cols="80">{{conv.log}}</textarea> <br /><br />
+            <form action="{{url_for('write')}}" method="post" >
+                <input type="hidden" name="u1" value={{conv.u1}} />
+                <input type="hidden" name="u2" value={{conv.u2}} />
+                <input type="text" name="toSend" />
+                <input type="submit" value="SEND!" />
+            </form>
         </div>
         {% endfor %}
     </div>

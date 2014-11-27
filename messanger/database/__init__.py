@@ -36,9 +36,14 @@ def add(user1,user2,toadd):
     with app.app_context():
         conn = sqlite3.connect(db)
         c =  conn.cursor()
-        c.execute("SELECT log FROM conversations WHERE user1=? AND user2=?",(user1,user2))
-        now = c.fetchone()
-        c.execute("UPDATE conversations SET log=? WHERE user1=? AND user2=?",(now[0]+toadd,user1,user2))
+        try:
+            c.execute("SELECT log FROM conversations WHERE user1=? AND user2=?",(user1,user2))
+            now = c.fetchone()
+            c.execute("UPDATE conversations SET log=? WHERE user1=? AND user2=?",(now[0]+toadd,user1,user2))
+        except TypeError:
+            c.execute("SELECT log FROM conversations WHERE user1=? AND user2=?",(user2,user1))
+            now = c.fetchone()
+            c.execute("UPDATE conversations SET log=? WHERE user1=? AND user2=?",(now[0]+toadd,user2,user1))
         conn.commit()
         conn.close()
 
@@ -57,10 +62,10 @@ def getMyConversations(user):
         c = conn.cursor()
         conversations=[]
         for row in c.execute("SELECT * FROM conversations WHERE user1=?",[user]):
-            this={'me':row[1], 'to':row[2], 'log':row[3]}
+            this={'me':row[1], 'to':row[2], 'log':row[3], 'u1':row[1], 'u2':row[2]}
             conversations.append(this)
         for row in c.execute("SELECT * FROM conversations WHERE user2=?",[user]):
-            this={'me':row[2],'to':row[1], 'log':row[3]}
+            this={'me':row[2],'to':row[1], 'log':row[3], 'u1':row[2], 'u2':row[1]}
             conversations.append(this)
         conn.commit()
         conn.close()
