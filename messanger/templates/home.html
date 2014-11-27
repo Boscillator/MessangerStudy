@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+{% block content %}
+<p>Welcome to Missi, a messanger thing made by Fred Buchanan!</p>
+
+<form action="{{url_for('makeConversation')}}" method="post">
+    Start talking to: <input type="text" name="sendTo" /><input type="submit" value="Go!" />
+</form>
+
+{% endblock %}
